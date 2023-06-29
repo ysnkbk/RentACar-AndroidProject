@@ -1,117 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    >
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:textAlignment="center"
-        tools:background="@color/teal_200">
+    android:layout_marginTop="8dp">
 
 
-        <ImageView
-            android:id="@+id/carImage"
-            android:layout_width="191dp"
-            android:layout_height="221dp"
-            android:padding="@dimen/cardview_default_elevation"
-            android:scaleType="fitXY"
-            android:textAlignment="center" />
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="4dp"
-            android:text="Car Name"
-            android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="10dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
 
-        </EditText>
+        app:cardCornerRadius="4dp"
+        android:backgroundTint="#163341">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/carName"
-            android:layout_width="220dp"
+            <ImageView
+                android:id="@+id/carImage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+
+                app:srcCompat="@drawable/araba" />
+
+            <TextView
+            android:id="@+id/modelTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            tools:text="Car Name" />
+            android:layout_alignParentRight="true"
+            android:text="Model"
+            android:layout_marginTop="30dp"
+           android:layout_marginRight="60dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="4dp"
-            android:text="Brand Name"
-            android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="15dp"></EditText>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="283dp" />
 
-        <TextView
-            android:id="@+id/brandName"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            tools:text="Brand Name" />
+            <TextView
+                android:id="@+id/priceEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="60dp"
+                android:text="Price"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:text="Color Name"
-            android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="10dp"></EditText>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/colorName"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="4dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            tools:text="Car Color" />
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:text="Price"
-            android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="10dp"></EditText>
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            tools:text="Car price" />
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:textSize="15dp"
-            android:text="Send message"
-            >
-
-        </Button>
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

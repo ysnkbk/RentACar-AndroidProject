@@ -1,22 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FeedActivity">
+    tools:context=".MainMenu"
+    android:background="@drawable/bckground"
+    >
+
+    <SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/kenar"
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        android:searchIcon="@drawable/ic_baseline_search_24"
+         />
+    <requestFocus />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/mercedesamblem"
+        android:layout_width="89dp"
+        android:layout_height="99dp"
+        android:layout_below="@id/searchBar"
+
+        android:layout_marginTop="20dp"
+
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/mercedes" />
+
+    <ImageView
+        android:id="@+id/bmwAmblem"
+        android:layout_width="89dp"
+        android:layout_height="99dp"
+        android:layout_below="@id/searchBar"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/bmw" />
+
+    <ImageView
+        android:id="@+id/ferrariAmblem"
+        android:layout_width="89dp"
+        android:layout_height="99dp"
+        android:layout_below="@id/searchBar"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ferrari2" />
+
+    <ImageView
+        android:id="@+id/cadillacAmblem"
+        android:layout_width="89dp"
+        android:layout_height="99dp"
+        android:layout_below="@id/searchBar"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="105dp"
+        android:src="@drawable/cadillac" />
+
+    <TextView
+        android:id="@+id/refreshClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mercedesamblem"
+        android:layout_marginLeft="10dp"
+        android:drawableRight="@drawable/ic_baseline_refresh_24"
+        android:text="All Cars"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/refreshClick"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical" />
+
+
+</RelativeLayout>

@@ -41,9 +41,12 @@ public class UploadActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private StorageReference storageReference;
+
     Uri imageData;
+
     ActivityResultLauncher<Intent> activityResultLauncher;
     ActivityResultLauncher<String> permissionLauncher;
+
     private ActivityUploadBinding binding;
 
     @Override
@@ -60,14 +63,15 @@ public class UploadActivity extends AppCompatActivity {
 
         if(item.getItemId()==R.id.cars){
 
-            Intent intentToUpload=new Intent(UploadActivity.this,FeedActivity.class);
+            Intent intentToUpload=new Intent(UploadActivity.this, MainMenu.class);
             startActivity(intentToUpload);
+            finish();
 
         }else if(item.getItemId()==R.id.signout){
 
             firebaseAuth.signOut();
 
-            Intent intentToMain=new Intent(UploadActivity.this, MainActivity.class);
+            Intent intentToMain=new Intent(UploadActivity.this, SignIn.class);
             startActivity(intentToMain);
             finish();
         }
@@ -90,22 +94,28 @@ public class UploadActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         storageReference = firebaseStorage.getReference();
+
     }
 
     public void upload(View view) {
-        if( binding.carNameText.getText().toString().length() == 0 ||
-                binding.colorNameText.getText().toString().length()==0 ||
-                binding.brandNameText.getText().toString().length()==0 ||
-                binding.priceText.getText().toString().length()==0
+
+        binding.uploadButton.setVisibility(View.INVISIBLE);
+
+        if( binding.serialEditText.getText().toString().isEmpty()||
+                binding.colorEditText.getText().toString().isEmpty()||
+                binding.modelEditText.getText().toString().isEmpty()||
+                binding.priceEditText.getText().toString().isEmpty() ||
+                binding.countEditText.getText().toString().isEmpty()
         ){
-            binding.carNameText.setError( "Hic bir bolum bos olamaz!" );
+            binding.serialEditText.setError( "Hic bir bolum bos olamaz!" );
             Intent i = new Intent(getApplicationContext(), UploadActivity.class);
             startActivity(i);
+
         } else if (imageData != null){
 
             UUID uuid=UUID.randomUUID();
-            final String imageName="images/"+uuid+".jpg";
 
+            final String imageName="images/"+uuid+".jpg";
 
             storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -121,24 +131,31 @@ public class UploadActivity extends AppCompatActivity {
                             FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                             String userEmail=firebaseUser.getEmail();
 
-                            String carName=binding.carNameText.getText().toString();
-                            String brandName=binding.brandNameText.getText().toString();
-                            String colorName=binding.colorNameText.getText().toString();
-                            String priceText=binding.priceText.getText().toString();
+
+                            String colorName=binding.colorEditText.getText().toString();
+                            String modelName=binding.modelEditText.getText().toString();
+                            String serialName=binding.serialEditText.getText().toString();
+                            String yearText=binding.yearEditText.getText().toString();
+                            String priceText=binding.priceEditText.getText().toString();
+                            String countText=binding.countEditText.getText().toString();
+
 
                             HashMap<String,Object> postData=new HashMap<>();
+
                             postData.put("useremail",userEmail);
                             postData.put("dowloadurl",dowloadUrl);
-                            postData.put("carname",carName);
-                            postData.put("brandname",brandName);
+                            postData.put("serialname",serialName);
+                            postData.put("modelname",modelName);
                             postData.put("colorname",colorName);
+                            postData.put("year",yearText);
                             postData.put("price",priceText);
+                            postData.put("count",countText);
 
                             firebaseFirestore.collection("Posts").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(UploadActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent=new Intent(UploadActivity.this,FeedActivity.class);
+                                    binding.uploadButton.setVisibility(View.VISIBLE);
+                                    Intent intent=new Intent(UploadActivity.this, MainMenu.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                 }
@@ -189,7 +206,6 @@ public class UploadActivity extends AppCompatActivity {
                 }
             }
         });
-
         permissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
             if (result) {
                 Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

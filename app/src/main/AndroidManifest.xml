@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.POST_NOTIFICATIONS"
         tools:node="remove" />
@@ -17,16 +18,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LastProject">
         <activity
-            android:name=".Messaging"
+            android:name=".DetailOfCar"
             android:exported="false" />
         <activity
-            android:name=".FeedActivity"
+            android:name=".GmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SingUp"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenu"
             android:exported="false" />
         <activity
             android:name=".UploadActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,16 +49,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/notification_icon" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="#4CAF50" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_id" />
     </application>
 
 </manifest>

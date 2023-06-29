@@ -1,103 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadActivity">
+    tools:context=".SignIn"
+    android:background="@drawable/bckground">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="370dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:onClick="selectimage"
-        app:layout_constraintBottom_toTopOf="@+id/carNameText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/selectimage" />
-
-    <EditText
-        android:id="@+id/carNameText"
+        android:src="@drawable/selecimagenew" />
+    <TextView
+        android:id="@+id/renkGirText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:ems="10"
-        android:hint="Enter Car Name"
-        android:inputType="textPersonName"
-
+        android:layout_below="@+id/imageView"
+        android:text="Enter a color"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"/>
+    <EditText
+        android:id="@+id/colorEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/renkGirText"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/brandNameText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/kenar"
+        android:textColor="#4CAF50"/>
 
-    <EditText
-        android:id="@+id/colorNameText"
+    <TextView
+        android:id="@+id/modelGirText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="Enter Color Name"
-        android:inputType="textPersonName"
+        android:layout_below="@+id/colorEditText"
+        android:text="Enter a model"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"/>
+
+    <EditText
+        android:id="@+id/modelEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelGirText"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/priceText"
-        app:layout_constraintStart_toStartOf="@+id/brandNameText"
-        app:layout_constraintTop_toBottomOf="@+id/brandNameText" />
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/kenar"
+        android:textColor="#4CAF50"/>
 
-    <EditText
-        android:id="@+id/priceText"
+    <TextView
+        android:id="@+id/yilGirText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:ems="10"
-        android:hint="Enter Price of Sell"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintStart_toStartOf="@+id/colorNameText"
-        app:layout_constraintTop_toBottomOf="@+id/colorNameText" />
+        android:layout_below="@+id/modelEditText"
+        android:text="Enter a year"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"/>
 
     <EditText
-        android:id="@+id/brandNameText"
-        android:layout_width="wrap_content"
+        android:id="@+id/yearEditText"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Enter Brand Name"
-        android:inputType="textPersonName"
+        android:layout_below="@id/yilGirText"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/colorNameText"
-        app:layout_constraintEnd_toEndOf="@+id/carNameText"
-        app:layout_constraintTop_toBottomOf="@+id/carNameText" />
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/kenar"
+        android:textColor="#4CAF50"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="391dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="1dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/uploadButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceText">
+    <TextView
+        android:id="@+id/seriGirText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/yearEditText"
+        android:text="Enter a serial"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"/>
 
-    </ProgressBar>
+    <EditText
+        android:id="@+id/serialEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seriGirText"
+        android:text=""
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:background="@drawable/kenar"
+        android:textColor="#4CAF50"/>
+
+    <TextView
+        android:id="@+id/countGirText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serialEditText"
+        android:text="Enter count of Car"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"/>
+
+    <EditText
+        android:id="@+id/countEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countGirText"
+        android:text=""
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/kenar"
+        android:textColor="#4CAF50"/>
+
+    <TextView
+        android:id="@+id/priceGirText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/countEditText"
+        android:text="Enter price of Car"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"/>
+
+    <EditText
+        android:id="@+id/priceEditText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priceGirText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/kenar"
+        android:textAlignment="center"
+        android:text=""
+        android:inputType="numberSigned"
+        android:textColor="#4CAF50" />
 
     <Button
         android:id="@+id/uploadButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="ADD"
         android:onClick="upload"
-        android:text="upload"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@drawable/input_bg"/>
+
+
+
+</RelativeLayout>
